@@ -286,13 +286,15 @@ nav i {
 
 .card {
     display: flex;
-    justify-content: space-around;
-    margin-top: 80px;
-    margin-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -15px 30px;
+    
 }
 
 .card_item {
-    width: 380px;
+    width: 33.333%;
+    padding: 0 15px;
     
 }
 
@@ -314,14 +316,17 @@ nav i {
     opacity: .1    /*при наведении мыши добавляется прозрачность картинки-проявляется фон*/
 }
 
-.card_img {
-    background: linear-gradient(to bottom, #db7574, #e3ca7c); /*плавный переход цвета фона*/
+.card_img  {
+    background: linear-gradient(to bottom, #db7574, #e3ca7c) no-repeat; /*плавный переход цвета фона*/
     transform: .3s linear; /* регулируем плавность трансформации*/
 }
 
 .card_img img {
     display: block; /* нужно для того, чтобы фон не вылезал за картинку*/
-    transition: opacity .3s linear;  /* добавляем плавности для прозрачности */
+    max-width: 100%;
+    height: auto;
+   
+    transition: opacity .1s linear;  /* добавляем плавности для прозрачности */
 }
 
 .card_text {   /*текст в центре картинки - привязывается через relative в card_item */
@@ -369,10 +374,12 @@ nav i {
 .stat {
     display: flex;
     margin-top: 110px;
+    flex-wrap: wrap;
 }
 
 .stat_item {
     flex: 1 1 0; /* делаем все item одинаковой ширины*/
+    
     border-left: 1px solid #b5eae0;
     text-align: center;
     color: #fff;
@@ -400,20 +407,21 @@ nav i {
 
 .services {
     display: flex;
-    
+    flex-wrap: wrap;
     
 }
 
 .services_item {
-    flex:1 1 0; /* разделы займут одинаковое пространство */
-    padding-left: 85px;
-    padding-right: 35px;
-    padding-top: 45px;
+    width: 33.3333%;
+    padding: 0 35px 35px 85px;
     position: relative; /* привязываем к этому разделу иконки и текст  */
+    margin-bottom: 40px;
     
     
 }
-
+.services_item--border {
+    border-bottom: 1px solid #e5e5e5;
+}
 
 .services_icon {
     position: absolute; /*отрываем иконку от блока item*/
@@ -450,6 +458,8 @@ nav i {
 
 .devices_item {
     display: block;
+    max-width: 100%;
+    width: auto;
     
     
 }
@@ -466,17 +476,24 @@ nav i {
 
 .wedo {
     display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
     
 }
 
 .wedo_item {
-    width: 55%;
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+    padding: 0 15px;
      
 }
 
 .wedo_item--img {
-   margin-left: 15%;
-margin-bottom: 10%;
+    display: block;
+    
+    max-width: 100%;
+    height: auto;
 }
 
 /* Accordion */
@@ -1151,6 +1168,195 @@ transition: background .2s linear;
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1230px) {
 
+    /* Intro*/
+    
+    .intro_title {
+        font-size: 120px;
+    }
+    .intro_suptitle {
+        font-size: 52px;
+    }
+    
 }
+
+@media (max-width: 990px) {
+
+    /* Intro*/
+    
+    .intro_title {
+        font-size: 80px;
+    }
+    .intro_suptitle {
+        font-size: 32px;
+    }
+ 
+    /* statistics */
+    
+    .stat {
+        justify-content: center;
+    }
+    
+    .stat_item {
+        flex: none;
+        border: 0;
+        width: 33%;
+        padding: 30px 12px;
+    }
+    
+     .stat_item:last-child {
+     
+        border-right: 0;
+     
+    }
+    
+    /* services */
+    .services_item {
+    width: 50%;
+    padding-bottom: 0;
+        
+}
+    .services_item--border {
+        border: 0;
+    } 
+    
+}
+
+
+
+
+@media (max-width: 770px) {
+/* Навигация */
+    nav {
+    display: none;
+    }    
+/* Слайдер */
+    
+    .slider_text {
+        display: none;
+    } 
+    
+    .slider_item:hover:before {
+        width: 50%;
+    }
+    
+        /* services */
+    .services {
+        justify-content: center;
+    }
+    
+    .services_item {
+    width: 100%;
+    max-width: 400px;
+    padding-left: 55px;
+    padding-right: 0;
+        
+}
+    .services_icon {
+        left: 4px;
+    }
+    
+    /* Section -  */  
+.section {
+    padding: 40px 0; /* отступ сверху и снизу по 80 пикселей*/
+    
+    }
+
+    .section--devices {
+        padding-bottom: 0;
+    }
+    
+     /* Card  */       
+        
+    .card {
+        margin-top: 0;
+        justify-content: center;
+       
+    }
+    
+    .card_item {
+    width: 100%;
+    max-width: 410px;
+    margin-bottom: 30px;
+    
+    }
+    
+    .card_item:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* wedo */
+
+.wedo_item--img {
+    display: none;
+}
+    .wedo_item {
+        width: 100%;
+    }
+    
+    
+    @media (max-width: 575px) {
+
+    /* Intro*/
+    
+    .intro_title {
+        font-size: 60px;
+    }
+    .intro_suptitle {
+        font-size: 32px;
+    }
+        
+        /* Section  */  
+    
+   .section_title {
+    font-size: 24px;
+    }
+    
+    .section_suptitle {
+     font-size: 20px;
+   
+}
+    .section_text {
+    font-size: 7px;
+    
+}
+        .section_title:after { /*красная полоска после заголовка*/
+      margin: 20px auto 20px;
+}
+        .section_header {
+            margin-bottom: 30px;
+        }
+ /* Card  */       
+        
+    .card {
+     margin: 0px -15px 0;
+    
+}
+        
+         /* statistics */
+
+        .stat_item {
+            width: 100%;
+            border-bottom: 1px solid #b5eae0;
+        }
+        .stat_item:last-child {
+            border-bottom: 0;
+        }
+        
+        .stat_count {
+            font-size: 52px;
+        }
+          
+        /* devices */
+        
+        .devices {
+            max-width: 320px;
+        }
+        .devices_item--iphone {
+            width: 180px;
+            bottom: -50px;
+            right: -80px;
+        }   
+        
+    }
