@@ -13,34 +13,41 @@
       
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/50ff335d81.css">    
+<link rel="stylesheet" href="https://use.fontawesome.com/50ff335d81.css">   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
         
 <title>Mogo</title>
 </head>
 <body>
     
-    
-    <header class="header">
+<div class="page">
+    <header class="header" id="header"> <!-- id нужен для JS -->
         <div class="container">
             <div class="header_inner">
-                <div class="header_logo">Mogo</div>
-                <nav>
-                <a class="nav_link" href="#">About</a> 
-                <a class="nav_link" href="#">Service</a> 
-                <a class="nav_link" href="#">Work</a> 
-                <a class="nav_link" href="#">Blog</a> 
-                <a class="nav_link" href="#">Contact</a> 
-                <a class="nav_link" href="#"><i class="far fa-shopping-cart"></i></a> 
-                 <a class="nav_link" href="#"><i class="fas fa-search"></i></a>                   
+<div class="header_logo" data-scroll="#intro">Mogo</div>
+                <nav class="nav" id="nav">
+<a class="nav_link" href="#" data-scroll="#about">About</a> 
+<a class="nav_link" href="#" data-scroll="#services">Service</a> 
+<a class="nav_link" href="#" data-scroll="#works">Work</a> 
+<a class="nav_link" href="#" data-scroll="#blog">Blog</a> 
+<a class="nav_link" href="#" data-scroll="#footer">Contact</a> 
+<a class="nav_link" href="#"><i class="far fa-shopping-cart"></i></a> 
+<a class="nav_link" href="#"><i class="fas fa-search"></i></a>                   
                                
                 </nav>
-                     
-            </div>
-        </div>
+<button class="nav-toggle" id="nav-toggle" type="button">
+<span class="nav-toggle_item">Menu</span>
+                </button> <!--/nav-toggle-->
+                
+                
+                
+            </div> <!--/header_inner-->
+        </div> <!--/header-->
         
     </header>
     
-<div class="intro">
+<div class="intro" id="intro"> <!-- id нужно для измерения высоты-->
     <div class="container">
         <div class="intro_inner">
             <h2 class="intro_suptitle">Creative Template</h2>
@@ -74,7 +81,9 @@
                   </div>
 </div>
     
-        <div class="section">                               <!-- Начало второй страницы-->
+        <!-- About -->
+        
+        <div class="section" id="about">                               <!-- Начало второй страницы-->
             <div class="container"> 
                 <div class="section_header">
                     <h3 class="section_suptitle">What we do</h3>
@@ -115,7 +124,7 @@
             </div>
                 </div>
         
-        </div><!-- Блок about с картинками -->
+        </div><!-- Блок Statistics -->
     
         <div class="statistics">
             <div class="container">
@@ -144,9 +153,10 @@
             </div>
         </div>
         
-        <!-- Начало новой секции -->
+      
+        <!-- Services-->
         
-               <div class="section">                               <!-- Начало второй страницы-->
+               <div class="section" id="services" >                             
             <div class="container"> 
                 <div class="section_header">
                     <h3 class="section_suptitle">We work with</h3>
@@ -202,7 +212,7 @@
         
  
         
-     <!-- Новая секция-->   
+     <!-- Devices-->   
         <section class="section section--devices">
             <div class="container">
                 <div class="section_header">
@@ -217,6 +227,8 @@
                 </div>
         </section> <!-- Конец второй секции с айфоном и айпадом-->
         
+        <!-- what we do -->
+        
     <section class="section">
             <div class="container">
                 <div class="section_header">
@@ -228,62 +240,91 @@
                 </div> <!--/section_header-->
         </div> <!--/container-->
         </section>
-        
+    <div class="section--wedo">
         <div class="wedo">
             <div class="wedo_item">
             <img class="wedo_item--img" src="assets/images/MoGo_FREE_Template_by_Laaqiq_03.jpg" alt="">                                
             </div>
             <div class="wedo_item">
                 <div class="accordion"> </div>
-                    <div class="accordion_item">
-                        <div class="accordion_header">
+    <div class="accordion_item" data-collapse="#wedo_1">
+    <div class="accordion_header">
                             <img class="accordion_icon" src="..//mogo_2/assets/images/services/photography.png" alt="">
                         <div class="accordion_title">Photography</div>
                         </div> <!-- accordion_header-->
-                        <div class="accordion_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="accordion_content" id="wedo_1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                                                                   
                 </div> <!-- accordion_item--> 
-                <div class="accordion_item">
-                        <div class="accordion_header">
+    <div class="accordion_item" data-collapse="#wedo_2">
+    <div class="accordion_header" >
                             <img class="accordion_icon" src="..//mogo_2/assets/images/services/creativity.png" alt="">
                         <div class="accordion_title">creativity</div>
                         </div> <!-- accordion_header-->
-                        <div class="accordion_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    <div class="accordion_content" id="wedo_2"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                 
                 </div> <!--accordion_item-->
                 
-                 <div class="accordion_item">
-                        <div class="accordion_header">
+    <div class="accordion_item" data-collapse="#wedo_3">
+    <div class="accordion_header">
                             <img class="accordion_icon" src="..//mogo_2/assets/images/services/webdisign.png" alt="">
                         <div class="accordion_title">web design</div>
                         </div> <!-- accordion_header-->
-                        <div class="accordion_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    <div class="accordion_content" id="wedo_3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
                 
                 </div> <!--accordion_item-->
                 
             </div> <!-- Wedo_item-->
             
         </div> <!-- Wedo -->
+        </div>
+        
+        
+<!-- Reviews 1 --> 
         
 <div class="section--gray">  <!-- Секция без заголовка поэтому используем div --> 
+    
+    
+    
         <div class="container">
             
                  <div class="reviews">
+  
+    <!-- кнопки:                 
     <a class="reviews_btn reviews_btn--prev" href="#">Prev</a>
     <a class="reviews_btn reviews_btn--next" href="#">Next</a>
-                     <div class="reviews_item">
-    <img class="reviews_photo" src="http://placehold.it/145" alt="">
+    -->
+                     
+    <div data-slider>
+        <div> <!-- нужен чтобы стили слайдера не накладывались на стили item -->
+    <div class="reviews_item">
+    <img class="reviews_photo" src="assets/images/r1.png" alt="">
     <div class="reviews_text">
                          “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”
                          </div>
  <div class="reviews_author">Jon Doe</div>
                              
                      </div> <!--reviews_item-->
-                </div> <!--reviews-->
-            
+        </div>
+        
+        <div> <!-- нужен чтобы стили слайдера не накладывались на стили item -->
+            <div class="reviews_item">
+    <img class="reviews_photo" src="assets/images/reviews.gif" alt="">
+    <div class="reviews_text">
+                         “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”
+                         </div>
+ <div class="reviews_author">Jon Doe</div>
+                             
+                     </div> <!--reviews_item-->
+        </div>
+        
+        
+                </div>  <!--data-slider-->
+            </div>     <!--reviews-->            
     </div> <!--container gray-->
     </div> <!--Section--gray-->
         
+        
+<!-- Team --> 
 <section class="section">  <!-- Начало раздела про команду -->
         <div class="container">
      <div class="section_header">
@@ -389,35 +430,40 @@
             </div>
             </div>  <!--card_item-->
                </div>    <!--card-->
-                   
-    <div class="section section--gray">
+        
+        
+<!-- Logos--> 
+<div class="section section--gray">
         <div class="container">
             
             <div class="logos">
                 <div class="logos_item">
-            <img src="assets/images/logos/1.png" alt="">
+            <img class="logos_img" src="assets/images/logos/1.png" alt="">
                 </div>
     <div class="logos_item">
-            <img src="assets/images/logos/2.png" alt="">
+            <img class="logos_img" src="assets/images/logos/2.png" alt="">
                 </div>
             <div class="logos_item">
-            <img src="assets/images/logos/3.png" alt="">
+            <img class="logos_img" src="assets/images/logos/3.png" alt="">
                 </div>
                 <div class="logos_item">
-            <img src="assets/images/logos/4.png" alt="">
+            <img class="logos_img" src="assets/images/logos/4.png" alt="">
                 </div>
                 
                 <div class="logos_item">
-            <img src="assets/images/logos/5.png" alt="">
+            <img class="logos_img" src="assets/images/logos/5.png" alt="">
                 </div>
                 <div class="logos_item">
-            <img src="assets/images/logos/6.png" alt="">
+            <img class="logos_img" src="assets/images/logos/6.png" alt="">
                 </div>
                 </div> <!--/logos-->
                 </div> <!--/container-->
          </div> <!--/section section--gray-->
+       
         
-    <section class="section">
+        
+<!-- Works --> 
+    <section class="section" id="works">
             <div class="container">
                 <div class="section_header">
                     <h3 class="section_suptitle">What we do</h3>
@@ -492,13 +538,15 @@
                 
         </section>        
         
-        
+<!-- Reviews 2 -->      
         <div class="section">  <!-- Секция без заголовка поэтому используем div --> 
         <div class="container--reviews">
             
                  <div class="reviews">
-    <a class="reviews_btn reviews_btn--prev" href="#">Prev</a>
-    <a class="reviews_btn reviews_btn--next" href="#">Next</a>
+
+<div data-slider>
+    
+    <div> <!-- нужен чтобы стили слайдера не накладывались на стили item -->
                      <div class="reviews_item">
     <img class="reviews_photo" src="assets/images/r1.png" alt="">
     <div class="reviews_text">
@@ -507,11 +555,29 @@
  <div class="reviews_author">Joshua Earle</div>
                              
                      </div> <!--reviews_item-->
+    </div>
+    
+        <div><!-- нужен чтобы стили слайдера не накладывались на стили item -->
+                     <div class="reviews_item">
+    <img class="reviews_photo" src="assets/images/r1.png" alt="">
+    <div class="reviews_text">
+                         “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.”
+                         </div>
+ <div class="reviews_author">Joshua Earle</div>
+                             
+                     </div> <!--reviews_item-->
+    </div>
+    
+    
+    
+    </div>  <!--data-slider-->                   
+                     
                 </div> <!--reviews-->
             
     </div> <!--container gray-->
     </div> <!--Section--gray-->
-        
+
+<!-- Clients -->         
 <section class="section--clients">
 <div class="container">
     <div class="section_header">
@@ -560,8 +626,10 @@
             </div>  <!--/clients-->
 </div> <!--/container-->
     </section>
+ 
         
-<section class="section">
+<!-- Blog --> 
+<section class="section" id="blog">
    <div class="container">
     <div class="section_header">
                     <h3 class="section_suptitle">Our stories</h3>
@@ -664,6 +732,8 @@
        </div> <!--/container-->     
     </section>        
 
+        
+<!-- Map -->         
 <section class="section section--map">
 <div class="container">
     <div class="map">
@@ -674,8 +744,10 @@
     </div> <!--map-->
     </div> <!--container-->
     </section>
+        
+<!-- Footer --> 
 <section>
-    <footer class="footer">
+    <footer class="footer" id="footer">
     <div class="container">
         
         <div class="footer_inner">
@@ -802,14 +874,16 @@ incididunt ut labore</a>
         
 </div> <!--container-->
 
-
-        
-        
-        
-        
-       
+ 
         </footer>
         </section>
+</div> <!--* Page * -->
         
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>     <!-- подключаем Jquery from Google CDN-->
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="assets/js/app.js"></script>  <!-- подключаем файл JavaScript-->
+    
     </body>
 </html> 

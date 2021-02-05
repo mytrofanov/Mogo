@@ -6,6 +6,10 @@ line-height: 1.6;
     margin: 0;
     }
 
+.page {
+    overflow: hidden;
+}
+
 *,
 *:after,
 *:before {
@@ -45,6 +49,9 @@ hr {
     justify-content: center;  /*этими тремя строчками выравниваем по центру блока Интро заголовки */
     width: 100%;
     height: 100vh;
+    min-height: 600px;
+    
+    position: relative; /*привязываем блок слайдера*/
     background: url(../images/intro.jpg) center no-repeat;
     background-size: cover;
     }
@@ -94,6 +101,28 @@ hr {
     z-index: 1000;
         
 }
+
+.header.fixed {  /* меню мобильных устройств */
+    padding: 10px 0;
+    
+    background-color: #eb8b8d;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    transform: translate3d(0, 0, 0); /*нужно, чтобы меню не дергалось при скроле - добавляется третье измерение*/
+    
+    
+}
+
+
+.header.active {
+   background-color: #eb8b8d;
+}
+
 .header_inner {
     display: flex;
     justify-content: space-between;
@@ -144,10 +173,101 @@ nav i {
     color: #fce38a;
     }
 
-.nav_link:hover:after {
-    display: block;  /*при наведении мыши полоска проявится */
+.nav_link:hover:after,
+.nav_link.active:after {
+   
     opacity: 1;
 }
+
+.nav_link.active {
+    color: #fce38a;
+}
+
+
+
+
+/* Nav toggle - мобильное меню */
+
+.nav-toggle {
+    width: 30px;
+    padding: 10px 0;
+    display: none;
+    
+    font-size: 0;
+    color: transparent;
+    
+    border: 0;   /*скрываем вид кнопки по умолчанию*/
+    background: none; /*скрываем вид кнопки по умолчанию*/
+    cursor:pointer;
+    
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 1;
+}
+
+.nav-toggle:focus {
+    outline: 0;  /* убрали поля-окантовку вокруг кнопки бургер-меню*/
+}
+
+.nav-toggle_item {
+    display: block;
+    width: 100%;
+    height: 3px;
+    
+    background-color: white;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    
+    transition: background 0.2s linear;
+}
+
+.nav-toggle.active .nav-toggle_item {
+    background: none;  /* убираем среднюю полоску бургера*/
+}
+
+
+.nav-toggle_item:before,
+.nav-toggle_item:after {
+    content: "";
+    width: 100%;
+    height: 3px; 
+    
+    background-color: white;
+    
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: transform .2s linear;
+    }
+
+.nav-toggle_item:after { /*нижняя полоска бургера*/
+    bottom: -8px;
+}
+
+.nav-toggle_item:before { /*верхняя полоска бургера*/
+    top: -8px;
+}
+
+.nav-toggle.active .nav-toggle_item:before {
+    transform-origin: left top;
+    transform: rotate(45deg) /* поворачиваем верхнюю полоску бургера превращая ее в часть крестика*/
+    translateX(-2px);
+    transition: transform .2s linear;
+}
+
+.nav-toggle.active .nav-toggle_item:after {
+    transform-origin: left bottom;
+    transform: rotate(-45deg) /* поворачиваем верхнюю полоску бургера превращая ее в часть крестика*/
+    translateX(-3px);
+    transition: transform .2s linear;
+}
+
 
 
 /* Button*/
@@ -221,7 +341,15 @@ nav i {
 /* Section - начинаная со второй страницы */  
 .section {
     padding: 80px 0; /* отступ сверху и снизу по 80 пикселей*/
+    
 }
+
+.section--wedo {
+    padding: 0 0 80px; /* отступ сверху и снизу по 80 пикселей*/
+}
+
+
+
 .section--devices {
     margin-bottom: 40px;
     
@@ -232,6 +360,7 @@ nav i {
 
 .section--gray {
     background-color: #f8f8f8;
+  
 }
 
 .section_header {
@@ -502,11 +631,15 @@ nav i {
     border: 1px solid #e5e5e5;
 }
 
-.accordion_item:hover .accordion_content{
+.accordion_item.active  .accordion_content{
     display: block;
 }
 
-.accordion_item:hover .accordion_header:after {
+.accordion_item.active  .accordion_header{
+    border-bottom-color: #e5e5e5;
+}
+
+.accordion_item.active  .accordion_header:after {
     transform:rotate(130deg) translateY(60%); 
     right: 10px;
      transition: opacity .3s linear; 
@@ -514,7 +647,7 @@ nav i {
 
 .accordion_header {
     padding: 15px 20px 15px 65px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid transparent;
     position: relative; /* чтобы выравнять иконку */
     cursor: pointer;
 }
@@ -561,11 +694,16 @@ nav i {
 
 
 .reviews {
-    padding: 0 110px;
+    
     position: relative;
 }
 
+.reviews .slick-slider {
+    padding: 0 110px;
+} 
+
 .reviews_item {
+min-height: 220px;
 padding-left:  235px;
 position: relative;
 }
@@ -582,6 +720,9 @@ position: relative;
 
 
 .reviews_photo {
+    display: block;
+    width: 210px;
+    height: 210px;
     position: absolute;
     top: 0;
     left: 0;
@@ -606,16 +747,27 @@ position: relative;
     height: 3px;
 }
 
-.reviews_btn {
+
+.slick-arrow {
+    display: block;
     font-size: 0;
     color: transparent;
+    
+    border: 0;
+    background: none;
+    cursor: pointer;
+    
     position: absolute;
     top: 50%;
     z-index: 1;
     transform: translateY(-50%);
 }
 
-.reviews_btn:after { /*стрелки по бокам от озывов section--gray*/
+.slick-arrow:focus {
+    outline: 0;
+}
+
+.slick-arrow:after { /*стрелки по бокам от озывов section--gray*/
      content: "";
     display: block;
     width: 16px;
@@ -628,12 +780,16 @@ position: relative;
        
 }
 
-.reviews_btn--prev {
+
+.slick-prev
+{
     left: 0;
     transform: rotate(-45deg); /* поворачиваем стрелку влево */ 
     }
 
-.reviews_btn--next {
+
+.slick-next
+{
     right: 0;
     transform: rotate(135deg);
 }
@@ -678,6 +834,18 @@ font-family: fontawesome !important;
     justify-content: space-between;
     background: #f8f8f8;
     align-items: center;
+    margin: 0 -15px;
+}
+
+.logos_item {
+    padding: 0 15px;
+}
+
+.logos_img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+        
 }
 
 
@@ -808,6 +976,7 @@ font-family: fontawesome !important;
 
 .blog {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -945,11 +1114,18 @@ font-family: fontawesome !important;
 .footer {
     background: #f8f8f8;
     padding-top: 65px;
+    padding-left: 5px;
 }
 .footer_inner {
     padding-bottom: 65px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin: 0 -15px;
+}
+
+.footer_col {
+    margin: 0 15px;
 }
 
 .footer_col--first {
@@ -1079,11 +1255,14 @@ blogs_img {
 }
 
 .intagram_item {
-    width: 32.333%;
+    width: 33%;
+    height: auto;
     border-bottom: 1px solid #fff;
 }
 .intagram_item img {
     display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Subscribe */
@@ -1179,6 +1358,10 @@ transition: background .2s linear;
         font-size: 52px;
     }
     
+    /* Reviews */
+    .reviews_text {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 990px) {
@@ -1220,6 +1403,53 @@ transition: background .2s linear;
     .services_item--border {
         border: 0;
     } 
+     
+    /* Reviews */
+    .reviews_photo {
+        width: 150px;
+        height: 150px;
+    }
+    .reviews_item .slick-slider{
+        padding-left: 175px;
+    }
+    
+    /* Clients */
+    
+    .clients {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .clients_item {
+    width: 100%;
+   
+}
+    .clients_item:last-child {
+        margin-bottom: 0;
+    }
+    
+    
+    /*Footer*/
+    .footer_col--first {
+    width: 100%;
+}
+    .footer_col--second {
+        width: 50%;
+    }
+    
+    .footer_col--third {
+        width: 50%;
+    }
+    
+    /*Instagram*/
+    .instagram {
+        justify-content: flex-start;
+    }  
+   
+    .intagram_item {
+        width: auto;
+        border-right: 1px solid white;
+    }
     
 }
 
@@ -1227,10 +1457,50 @@ transition: background .2s linear;
 
 
 @media (max-width: 770px) {
-/* Навигация */
+
+   /*Intro*/ 
+       .intro {
+    min-height: 500px;
+    
+       }    
+    
+    
+    
+    /* Навигация */
     nav {
     display: none;
+        width: 100%;
+        
+        position: absolute;
+        top: 100%;
+        left: 0;
+        
+        background-color: #eb8b8d; 
+        
+        
     }    
+    
+    .nav.active {
+        display: block;
+    }
+    
+    .nav_link {
+        display: block;
+        margin: 0;
+        padding: 8px 20px;
+    }
+    
+    .nav-toggle {
+        display: block;
+    }
+    
+    
+    /* header */
+    .header {
+        padding: 10px 0;
+    }    
+    
+    
 /* Слайдер */
     
     .slider_text {
@@ -1296,16 +1566,78 @@ transition: background .2s linear;
     }
     
     
+    /* Reviews */
+    .reviews .slick-slider {
+        padding: 50px 30px 0;
+    }
+    
+    .reviews_photo {
+        margin: 0 auto 20px;
+        position: static; /* картинка перескакивает вверх*/
+        
+    }
+    
+    .reviews_item {
+        padding-left: 0;
+    }
+    .reviews_text {
+        font-size: 16px;
+    }
+    .reviews_author {
+        font-size: 20px;
+    }
+    
+    
+    /* Works */
+    .works {
+        flex-wrap: wrap;
+    }
+    
+    .works_col {
+        flex: none;
+        width: 50%;
+    }
+    
+    /* blog */ 
+
+.blog {
+    margin: 0 auto;
+    max-width: 380px;
+    }
+    
+.blog_item {
+    width: 100%;
+    margin-bottom: 30px;    
+}
+    
+ .blog_item:last-child {
+    margin-bottom: 0;    
+}   
+     /*Footer*/
+
+    .footer_col--second {
+        width: 100%;
+    }
+    
+    .footer_col--third {
+        width: 100%;
+    }
+    
+    
+}
+    
     @media (max-width: 575px) {
 
     /* Intro*/
     
     .intro_title {
-        font-size: 60px;
+        font-size: 50px;
     }
     .intro_suptitle {
         font-size: 32px;
     }
+    
+ 
         
         /* Section  */  
     
@@ -1358,5 +1690,78 @@ transition: background .2s linear;
             bottom: -50px;
             right: -80px;
         }   
+        /* Reviews */
+    .reviews {
+        padding: 0;
+                
+    }
+        .slick-arrow {
+            top: 22%;
+            
+        }
+        
+        .logos {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logos_item {
+            width: 50%;
+        }
+        
+        .logos_img { 
+        margin: 0 auto 5px;
+        }
+        /* Works */
+    .works {
+        flex-wrap: wrap;
+    }
+    
+    .works_col {
+        
+        width: 100%;
+    }
+        
+        /* Clients */
+    .clients_photo {
+  
+    position: static;
+    
+        }     
+    
+    .clients_item {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+
+}
+        .clients_text:before {
+        margin: 15px auto;
+        }
+       
+        /*Subscribe*/
+        
+.subscribe {
+flex-wrap: wrap;
+max-width: none;
+        }  
+.subscribe_input {
+width: 100%;
+border-right: 1px solid #e7e7e7;
+margin-bottom: 10px;
+        }
+.subscribe_btn {
+width: 100%;
+        } 
+        
+/* Blogs */
+        .blogs_img {
+            width: 80px;
+            height: 50px;
+        }
+        
+
+
+        
         
     }
